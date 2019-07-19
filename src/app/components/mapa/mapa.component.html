@@ -6,7 +6,7 @@
                 <agm-info-window>
                     <p>{{marcador.titulo}}</p>
                     <div class="row">
-                        <button mat-raised-button color="primary">Editar</button>
+                        <button mat-raised-button color="primary" (click)="editarMarcador(marcador, i)">Editar</button>
                         <button mat-raised-button color="warn" (click)="borrarMarcador(i)">Borrar</button>
                     </div>
                 </agm-info-window>

@@ -1,0 +1,14 @@
+<form class="example-form" name="formulario">
+    <mat-form-field>
+        <input matInput placeholder="Titulo" [(ngModel)]="marcador.titulo" name="titulo">
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea rows="3" matInput placeholder="Comentario" [(ngModel)]="marcador.descripcion" name="descripcion"></textarea>
+    </mat-form-field>
+
+    <div class="row">
+        <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+        <button mat-raised-button color="warn" type="button" (click)="cerrar()">Cerrar</button>
+    </div>
+</form>

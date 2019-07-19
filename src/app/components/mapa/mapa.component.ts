@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Marcador } from '../../classes/marcador.class';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MapaEditarComponent } from './mapa-editar.component';
 
 @Component({
   selector: 'app-mapa',
@@ -13,8 +15,21 @@ export class MapaComponent implements OnInit {
 
   marcadores: Marcador[] = [];
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: MatSnackBar, public dialog: MatDialog) {
     this.obtenerMarcadores();
+  }
+
+  editarMarcador(marcador: Marcador, indice: number) {
+      const dialogRef = this.dialog.open(MapaEditarComponent, {
+        width: '250px',
+        data: marcador
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('resultado: ' + result.titulo);
+        this.marcadores[indice] = result;
+        this.guardarMarcadores();
+      });
   }
 
   ngOnInit() {
